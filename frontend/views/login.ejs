@@ -1,19 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
+    padding: 2rem; /* Adicionado padding para criar espaço interno */
+    text-align: center; /* Alinhamento centralizado para o texto */
+}
+
+h1 {
+    background: #fda085;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 20px;
+    margin-bottom: 1rem; /* Ajuste do espaçamento inferior */
+}
+
+h2 {
+    color: #333;
+    font-size: 1.5rem; /* Ajuste do tamanho da fonte */
+    margin-bottom: 1.5rem; /* Ajuste do espaçamento inferior */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 1rem; /* Adicionado margin-bottom para espaçamento entre campos */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #fda085;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #f6d365;
+}
+
+a {
+    display: block;
+    margin-top: 1rem;
+    color: #000000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: #fda085;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+  </style>
 </head>
 <body>
-  <h1>Login</h1>
-  <h2>Connex</h2>
-  <form action="/login" method="POST">
-    <label for="username">Email:</label>
-    <input type="text" id="username" name="username" required>
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" required>
-    <button type="submit">Login</button>
-  </form>
-  <a href="/register">Não tem uma conta na coneex? Se cadastre agora</a>
+  <div class="container">
+    <h1>Coneex</h1>
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <label for="username">Email</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <p class="signup-link">Não tem uma conta? <a href="/register">Cadastre-se</a></p>
+  </div>
 </body>
 </html>
