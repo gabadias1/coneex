@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
+const methodOverride = require('method-override');
 
 const app = express();
 const PORT = 3000;
@@ -15,6 +16,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+// Middleware para suportar métodos PUT e DELETE em formulários
+app.use(methodOverride('_method'));
 
 // Set up view engine
 app.set('view engine', 'ejs');

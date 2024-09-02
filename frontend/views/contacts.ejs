@@ -4,154 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: 'Roboto', Arial, sans-serif;
-    background: linear-gradient(120deg, #f6d365, #fda085);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 180vh;
-    margin: 0;
-}
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 1rem;
+        }
 
-.container {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-}
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            width: 80%;
+            max-width: 1000px;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
 
-h1 {
-    background: #fda085;
-    color: #fff;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
+        .form-container, .list-container {
+            flex: 1;
+        }
 
-h2 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-}
+        .form-container {
+            max-width: 400px;
+        }
 
-form {
-    margin-bottom: 2rem;
-}
+        .list-container {
+            max-width: 500px;
+            overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+            max-height: 500px; /* Define a altura máxima para a lista */
+        }
 
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #666;
-    text-align: left;
-}
+        h1 {
+            background: #fda085;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 15px;
+            margin-bottom: 1rem;
+        }
 
-input, textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
+        form {
+            margin-bottom: 1rem;
+        }
 
-button {
-    width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #e67e22;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            text-align: left;
+        }
 
-button:hover {
-    background-color: #d35400;
-}
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
 
-li {
-    background: #ffffff;
-    padding: 1rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-    text-align: left;
-}
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #fda085;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
-a {
-    color: #3498db;
-    text-decoration: none;
-}
+        button:hover {
+            background: #f6d365;
+        }
 
-a:hover {
-    text-decoration: underline;
-}
+        ul {
+            list-style: none;
+            padding: 0;
+        }
 
-.signup-link {
-    text-align: center;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-}
+        li {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
 
-.signup-link a {
-    color: #fda085;
-    text-decoration: none;
-    font-weight: 700;
-}
+        a {
+            color: #fda085;
+            text-decoration: none;
+        }
 
-.signup-link a:hover {
-    text-decoration: underline;
-}
-
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Contacts</h1>
-        <form action="/contacts/add" method="POST">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-            <label for="phone">Telefone:</label>
-            <input type="text" id="phone" name="phone">
-            <label for="notes">Notas:</label>
-            <textarea id="notes" name="notes"></textarea>
-            <button type="submit">Adicionar Contato</button>
-        </form>
-        <ul>
-            <% contacts.forEach(contact => { %>
-                <li>
-                    <strong><%= contact.name %></strong><br>
-                    Email: <%= contact.email %><br>
-                    Telefone: <%= contact.phone %><br>
-                    Notas: <%= contact.notes %>
-                </li>
-            <% }); %>
-        </ul>
-        <a href="/logout">Sair</a>
+        <div class="form-container">
+            <h1>Contacts</h1>
+            <form action="/contacts/add" method="POST">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="phone">Telefone:</label>
+                <input type="text" id="phone" name="phone">
+                <label for="notes">Notas:</label>
+                <textarea id="notes" name="notes"></textarea>
+                <button type="submit">Adicionar Contato</button>
+            </form>
+        </div>
+        <div class="list-container">
+            <ul>
+                <% contacts.forEach(contact => { %>
+                    <li>
+                        <strong><%= contact.name %></strong><br>
+                        Email: <%= contact.email %><br>
+                        Telefone: <%= contact.phone %><br>
+                        Notas: <%= contact.notes %><br>
+                        <a href="/contacts/edit/<%= contact._id %>">Editar</a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
