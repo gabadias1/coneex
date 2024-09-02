@@ -1,5 +1,5 @@
 # Agenda de Contatos 
-Este é um projeto desenvolvido para a disciplina de Engenharia de Software (BCC3004) na UTFPR. O objetivo do software é gerenciar uma agenda de contatos, permitindo a adição, visualização, edição e exclusão de entradas de contatos.
+Este é um projeto desenvolvido para a disciplina de Engenharia de Software (BCC3004) na UTFPR. O objetivo do software é gerenciar uma agenda de contatos, permitindo a adição, visualização e exclusão de entradas de contatos.
 ## Tecnologias 
 
 <p align="center">
