@@ -1,32 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Contacts</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180vh;
+    margin: 0;
+}
+
+.container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    background: #fda085;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+form {
+    margin-bottom: 2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+    text-align: left;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #e67e22;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d35400;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: #fda085;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+    </style>
 </head>
 <body>
-  <h1>Contacts</h1>
-  <form action="/contacts/add" method="POST">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
-    <label for="phone">Phone:</label>
-    <input type="text" id="phone" name="phone">
-    <label for="notes">Notes:</label>
-    <textarea id="notes" name="notes"></textarea>
-    <button type="submit">Add Contact</button>
-  </form>
-  <ul>
-    <% contacts.forEach(contact => { %>
-      <li>
-        <strong><%= contact.name %></strong><br>
-        Email: <%= contact.email %><br>
-        Phone: <%= contact.phone %><br>
-        Notes: <%= contact.notes %>
-      </li>
-    <% }); %>
-  </ul>
-  <a href="/logout">Logout</a>
+    <div class="container">
+        <h1>Contacts</h1>
+        <form action="/contacts/add" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <label for="phone">Telefone:</label>
+            <input type="text" id="phone" name="phone">
+            <label for="notes">Notas:</label>
+            <textarea id="notes" name="notes"></textarea>
+            <button type="submit">Adicionar Contato</button>
+        </form>
+        <ul>
+            <% contacts.forEach(contact => { %>
+                <li>
+                    <strong><%= contact.name %></strong><br>
+                    Email: <%= contact.email %><br>
+                    Telefone: <%= contact.phone %><br>
+                    Notas: <%= contact.notes %>
+                </li>
+            <% }); %>
+        </ul>
+        <a href="/logout">Sair</a>
+    </div>
 </body>
 </html>
