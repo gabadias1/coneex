@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Contato</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+        }
+
+        h1 {
+            background: #fda085;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 15px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            text-align: left;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #fda085;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #f6d365;
+        }
+
+        a {
+            display: block;
+            margin-top: 1rem;
+            color: #fda085;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Contato</h1>
+        <form id="editContactForm" action="/contacts/<%= contact._id %>?_method=PUT" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" value="<%= contact.name %>">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<%= contact.email %>">
+            <label for="phone">Telefone:</label>
+            <input type="text" id="phone" name="phone" value="<%= contact.phone %>">
+            <label for="notes">Notas:</label>
+            <textarea id="notes" name="notes"><%= contact.notes %></textarea>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+        <a href="/contacts">Voltar</a>
+    </div>
+</body>
+</html>
