@@ -17,3 +17,9 @@ Este projeto foi desenvolvido pelos seguintes alunos:
 -Gabriel Dias
 
 -Felipe A M Salazar
+
+## Iniciando Servidor
+
+```bash
+npm start
+```
