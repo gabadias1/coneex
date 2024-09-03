@@ -83,20 +83,61 @@
             height: 100px;
         }
 
-        button {
-            width: 100%;
+        /* CSS Geral para Botões */
+        button, .btn {
             padding: 10px;
-            background: #fda085;
-            color: #fff;
             border: none;
             border-radius: 5px;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+        }
+
+        /* Botão de Adicionar Contato */
+        .submit-btn {
+            background: #fda085;
+            color: #fff;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #f6d365;
+        }
+
+        /* Botão de Editar Contato */
+        .edit-btn {
+            background: #fda085;
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
             cursor: pointer;
             transition: background 0.3s;
         }
 
-        button:hover {
+        .edit-btn:hover {
             background: #f6d365;
+        }
+
+        /* Botão de Deletar Contato */
+        .delete-btn {
+            background: #e57373;
+            color: #fff;
+            border: none;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-left: 10px;
+        }
+
+        .delete-btn:hover {
+            background: #c62828;
         }
 
         ul {
@@ -111,6 +152,9 @@
             padding: 10px;
             margin-bottom: 1rem;
             text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         a {
@@ -120,6 +164,21 @@
 
         a:hover {
             text-decoration: underline;
+        }
+
+        .no-contacts {
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #333;
+            font-size: 1.2rem;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
         }
     </style>
 </head>
@@ -136,22 +195,64 @@
                 <input type="text" id="phone" name="phone">
                 <label for="notes">Notas:</label>
                 <textarea id="notes" name="notes"></textarea>
-                <button type="submit">Adicionar Contato</button>
+                <button class="submit-btn" type="submit">Adicionar Contato</button>
             </form>
         </div>
         <div class="list-container">
-            <ul>
-                <% contacts.forEach(contact => { %>
-                    <li>
-                        <strong><%= contact.name %></strong><br>
-                        Email: <%= contact.email %><br>
-                        Telefone: <%= contact.phone %><br>
-                        Notas: <%= contact.notes %><br>
-                        <a href="/contacts/edit/<%= contact._id %>">Editar</a>
-                    </li>
-                <% }); %>
-            </ul>
+            <% if (contacts.length === 0) { %>
+                <div class="no-contacts">Não há nenhum contato :&#40;</div>
+            <% } else { %>
+                <ul id="contact-list">
+                    <% contacts.forEach(contact => { %>
+                        <li id="contact-<%= contact._id %>">
+                            <div>
+                                <strong><%= contact.name %></strong><br>
+                                Email: <%= contact.email %><br>
+                                Telefone: <%= contact.phone %><br>
+                                Notas: <%= contact.notes %>
+                            </div>
+                            <div>
+                                <a href="/contacts/edit/<%= contact._id %>" class="edit-btn">Editar</a>
+                                <button class="delete-btn" data-id="<%= contact._id %>">Deletar</button>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', async (event) => {
+                    event.preventDefault(); // Evita o comportamento padrão do botão
+                    const contactId = button.getAttribute('data-id');
+                    const listItem = document.getElementById(`contact-${contactId}`);
+
+                    try {
+                        const response = await fetch(`/contacts/${contactId}?_method=DELETE`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        });
+
+                        if (response.ok) {
+                            listItem.remove();
+                            if (document.querySelector('#contact-list').children.length === 0) {
+                                document.querySelector('.no-contacts').style.display = 'block';
+                            }
+                        } else {
+                            console.error('Failed to delete contact');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

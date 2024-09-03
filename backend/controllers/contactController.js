@@ -53,3 +53,17 @@ exports.updateContact = async (req, res) => {
     res.status(500).json({ message: 'Erro ao atualizar o contato' });
   }
 };
+
+// Função para deletar um contato existente
+exports.deleteContact = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const contact = await Contact.findByIdAndDelete(id);
+    if (!contact) {
+      return res.status(404).json({ message: 'Contato não encontrado' });
+    }
+    res.status(200).json({ message: 'Contato deletado com sucesso' });
+  } catch (error) {
+    res.status(500).json({ message: 'Erro ao deletar o contato' });
+  }
+};
