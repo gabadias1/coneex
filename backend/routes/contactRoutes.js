@@ -10,6 +10,7 @@ router.use(methodOverride('_method'));
 router.get('/', contactController.getContacts);
 router.post('/add', contactController.addContact);
 router.put('/:id', contactController.updateContact);
+router.delete('/:id', contactController.deleteContact); // Rota para deletar contato
 
 // Rota para exibir o formulário de edição
 router.get('/edit/:id', async (req, res) => {
