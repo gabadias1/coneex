@@ -1,4 +1,4 @@
-const Contact = require('../models/contact');
+const Contact = require('../models/Contact');
 
 // Função para buscar um contato por ID
 exports.getContactById = async (id) => {
