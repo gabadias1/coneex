@@ -23,3 +23,11 @@ Este projeto foi desenvolvido pelos seguintes alunos:
 ```bash
 npm start
 ```
+
+## Atualização
+
+Após cada pull, se houve uma alteração no package.json será necessário executar o seguinte comando:
+
+```bash
+npm install
+```
