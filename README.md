@@ -1,4 +1,4 @@
-# Agenda de Contatos 
+# Connex
 Este é um projeto desenvolvido para a disciplina de Engenharia de Software (BCC3004) na UTFPR. O objetivo do software é gerenciar uma agenda de contatos, permitindo a adição, visualização e exclusão de entradas de contatos.
 ## Tecnologias 
 
@@ -12,11 +12,11 @@ Este é um projeto desenvolvido para a disciplina de Engenharia de Software (BCC
 ## Contribuidores
 Este projeto foi desenvolvido pelos seguintes alunos:
 
--Pedro Conrado
+- Pedro Conrado
 
--Gabriel Dias
+- Gabriel Dias
 
--Felipe A M Salazar
+- Felipe A M Salazar
 
 ## Iniciando Servidor
 
@@ -24,10 +24,4 @@ Este projeto foi desenvolvido pelos seguintes alunos:
 npm start
 ```
 
-## Atualização
 
-Após cada pull, se houve uma alteração no package.json será necessário executar o seguinte comando:
-
-```bash
-npm install
-```
