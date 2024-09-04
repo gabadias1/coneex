@@ -26,12 +26,13 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 1rem;
-            width: 80%;
-            max-width: 1000px;
+            width: 90%;
+            max-width: 925px; 
             padding: 1rem;
             background: #fff;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+            overflow: hidden; 
         }
 
         .form-container, .list-container {
@@ -39,22 +40,22 @@
         }
 
         .form-container {
-            max-width: 400px;
+            max-width: 100%;
         }
 
         .list-container {
-            max-width: 500px;
-            overflow-y: auto; /* Adiciona rolagem vertical se necessário */
-            max-height: 500px; /* Define a altura máxima para a lista */
+            max-width: 100%;
+            overflow-y: auto; 
+            max-height: 400px; 
         }
 
         h1 {
             background: #fda085;
             color: #fff;
-            font-size: 2rem;
+            font-size: 1.6rem; 
             font-weight: 700;
             letter-spacing: 1px;
-            padding: 15px;
+            padding: 10px; 
             margin-bottom: 1rem;
         }
 
@@ -64,37 +65,37 @@
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 4px; 
             color: #333;
             text-align: left;
         }
 
         input, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: 0.9rem; 
+            margin-bottom: 0.8rem; 
         }
 
         textarea {
             resize: vertical;
-            height: 100px;
+            height: 80px; 
         }
 
-        /* CSS Geral para Botões */
+
         button, .btn {
-            padding: 10px;
+            padding: 8px; 
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: background 0.3s;
             text-align: center;
         }
 
-        /* Botão de Adicionar Contato */
+
         .submit-btn {
             background: #fda085;
             color: #fff;
@@ -105,15 +106,15 @@
             background: #f6d365;
         }
 
-        /* Botão de Editar Contato */
+
         .edit-btn {
             background: #fda085;
             color: #fff;
             text-decoration: none;
             display: inline-block;
-            padding: 10px;
+            padding: 8px; 
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: background 0.3s;
         }
@@ -122,18 +123,18 @@
             background: #f6d365;
         }
 
-        /* Botão de Deletar Contato */
+
         .delete-btn {
             background: #e57373;
             color: #fff;
             border: none;
             display: inline-block;
-            padding: 10px;
+            padding: 8px; 
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 0.9rem; 
             cursor: pointer;
             transition: background 0.3s;
-            margin-left: 10px;
+            margin-left: 8px; 
         }
 
         .delete-btn:hover {
@@ -149,8 +150,8 @@
             background: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 1rem;
+            padding: 8px; 
+            margin-bottom: 0.8rem; 
             text-align: left;
             display: flex;
             justify-content: space-between;
@@ -167,13 +168,13 @@
         }
 
         .no-contacts {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
             color: #333;
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -195,10 +196,13 @@
                 <input type="text" id="phone" name="phone">
                 <label for="notes">Notas:</label>
                 <textarea id="notes" name="notes"></textarea>
+                <label for="tags">Tags (separadas por vírgula):</label>
+                <input type="text" id="tags" name="tags">
                 <button class="submit-btn" type="submit">Adicionar Contato</button>
             </form>
         </div>
         <div class="list-container">
+            <input type="text" id="search-tags" placeholder="Buscar:">
             <% if (contacts.length === 0) { %>
                 <div class="no-contacts">Não há nenhum contato :&#40;</div>
             <% } else { %>
@@ -209,7 +213,8 @@
                                 <strong><%= contact.name %></strong><br>
                                 Email: <%= contact.email %><br>
                                 Telefone: <%= contact.phone %><br>
-                                Notas: <%= contact.notes %>
+                                Notas: <%= contact.notes %><br>
+                                Tags: <%= contact.tags.join(', ') %>
                             </div>
                             <div>
                                 <a href="/contacts/edit/<%= contact._id %>" class="edit-btn">Editar</a>
@@ -224,9 +229,24 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Filtro de contatos por tags
+            document.getElementById('search-tags').addEventListener('input', function() {
+                const filter = this.value.toLowerCase();
+                const contacts = document.querySelectorAll('#contact-list li');
+                contacts.forEach(contact => {
+                    const tags = contact.textContent.toLowerCase();
+                    if (tags.includes(filter)) {
+                        contact.style.display = '';
+                    } else {
+                        contact.style.display = 'none';
+                    }
+                });
+            });
+
+            // Função para deletar contato
             document.querySelectorAll('.delete-btn').forEach(button => {
                 button.addEventListener('click', async (event) => {
-                    event.preventDefault(); // Evita o comportamento padrão do botão
+                    event.preventDefault();
                     const contactId = button.getAttribute('data-id');
                     const listItem = document.getElementById(`contact-${contactId}`);
 

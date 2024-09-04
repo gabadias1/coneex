@@ -1,6 +1,6 @@
 const Contact = require('../models/Contact');
 
-// Função para buscar um contato por ID
+
 exports.getContactById = async (id) => {
   try {
     const contact = await Contact.findById(id);
@@ -10,7 +10,7 @@ exports.getContactById = async (id) => {
   }
 };
 
-// Função para buscar todos os contatos
+
 exports.getContacts = async (req, res) => {
   try {
     const contacts = await Contact.find();
@@ -20,27 +20,33 @@ exports.getContacts = async (req, res) => {
   }
 };
 
-// Função para adicionar um novo contato
+
 exports.addContact = async (req, res) => {
-  const { name, email, phone, notes } = req.body;
+  const { name, email, phone, notes, tags } = req.body;
   try {
-    const contact = new Contact({ name, email, phone, notes });
+    const contact = new Contact({
+      name,
+      email,
+      phone,
+      notes,
+      tags: tags ? tags.split(',').map(tag => tag.trim()) : [] // Divide e limpa as tags
+    });
     await contact.save();
     res.redirect('/contacts');
-  } catch (err) {
-    res.status(500).send(err.message);
+  } catch (error) {
+    res.status(500).send('Erro ao adicionar contato');
   }
 };
 
-// Função para atualizar um contato existente
+
 exports.updateContact = async (req, res) => {
   const { id } = req.params;
-  const { name, email, phone, notes } = req.body;
+  const { name, email, phone, notes, tags } = req.body;
 
   try {
     const contact = await Contact.findByIdAndUpdate(
       id,
-      { name, email, phone, notes },
+      { name, email, phone, notes, tags: tags ? tags.split(',').map(tag => tag.trim()) : [] }, // Divide e limpa as tags
       { new: true }
     );
 
@@ -54,7 +60,7 @@ exports.updateContact = async (req, res) => {
   }
 };
 
-// Função para deletar um contato existente
+
 exports.deleteContact = async (req, res) => {
   const { id } = req.params;
   try {
@@ -65,5 +71,16 @@ exports.deleteContact = async (req, res) => {
     res.status(200).json({ message: 'Contato deletado com sucesso' });
   } catch (error) {
     res.status(500).json({ message: 'Erro ao deletar o contato' });
+  }
+};
+
+
+exports.getContactsByTag = async (req, res) => {
+  try {
+    const tag = req.query.tag;
+    const contacts = await Contact.find({ tags: tag });
+    res.render('contact', { contacts });
+  } catch (error) {
+    res.status(500).send('Erro ao buscar contatos');
   }
 };
