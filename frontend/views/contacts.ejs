@@ -84,7 +84,6 @@
             height: 80px; 
         }
 
-
         button, .btn {
             padding: 8px; 
             border: none;
@@ -95,7 +94,6 @@
             text-align: center;
         }
 
-
         .submit-btn {
             background: #fda085;
             color: #fff;
@@ -105,7 +103,6 @@
         .submit-btn:hover {
             background: #f6d365;
         }
-
 
         .edit-btn {
             background: #fda085;
@@ -122,7 +119,6 @@
         .edit-btn:hover {
             background: #f6d365;
         }
-
 
         .delete-btn {
             background: #e57373;
@@ -181,6 +177,64 @@
             align-items: center;
             height: 100%;
         }
+
+        #reminder-section {
+            margin-top: 1rem;
+        }
+
+        #reminder-section h2 {
+            background: #fda085;
+            color: #fff;
+            font-size: 1.4rem; 
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 10px; 
+            margin-bottom: 1rem;
+        }
+
+        #reminder-form label {
+            display: block;
+            margin-bottom: 4px; 
+            color: #333;
+            text-align: left;
+        }
+
+        #reminder-form input, #reminder-form textarea {
+            width: calc(100% - 16px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 0.9rem; 
+            margin-bottom: 0.8rem; 
+        }
+
+        #reminder-form textarea {
+            resize: vertical;
+            height: 80px; 
+        }
+
+        #reminder-form button {
+            background: #fda085;
+            color: #fff;
+            width: 100%;
+            padding: 10px;
+        }
+
+        #reminder-form button:hover {
+            background: #f6d365;
+        }
+
+        #reminder-list li {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px; 
+            margin-bottom: 0.8rem; 
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -227,8 +281,25 @@
         </div>
     </div>
 
+    <!-- Formulário para adicionar lembretes -->
+    <div id="reminder-section">
+        <h2>Lembretes</h2>
+        <form id="reminder-form">
+            <label for="date">Data:</label>
+            <input type="date" id="date" name="date" required>
+            <label for="note">Nota:</label>
+            <textarea id="note" name="note" required></textarea>
+            <button type="submit">Adicionar Lembrete</button>
+        </form>
+        <!-- Seção para mostrar lembretes -->
+        <ul id="reminder-list">
+            <!-- Lista de lembretes será preenchida aqui pelo JavaScript -->
+        </ul>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona funcionalidade de busca por tags
             document.getElementById('search-tags').addEventListener('input', function() {
                 const filter = this.value.toLowerCase();
                 const contacts = document.querySelectorAll('#contact-list li');
@@ -242,6 +313,7 @@
                 });
             });
 
+            // Adiciona funcionalidade para deletar contatos
             document.querySelectorAll('.delete-btn').forEach(button => {
                 button.addEventListener('click', async (event) => {
                     event.preventDefault();
@@ -269,6 +341,23 @@
                         console.error('Error:', error);
                     }
                 });
+            });
+
+            // Adiciona funcionalidade para adicionar lembretes
+            document.getElementById('reminder-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const date = document.getElementById('date').value;
+                const note = document.getElementById('note').value;
+
+                if (date && note) {
+                    const reminderList = document.getElementById('reminder-list');
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<strong>${date}</strong>: ${note}`;
+                    reminderList.appendChild(listItem);
+
+                    // Limpa o formulário após adicionar o lembrete
+                    this.reset();
+                }
             });
         });
     </script>
