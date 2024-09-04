@@ -17,32 +17,32 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// Middleware para suportar métodos PUT e DELETE em formulários
+
 app.use(methodOverride('_method'));
 
-// Configura a pasta de visualizações e o mecanismo de visualização EJS
+
 app.set('views', path.join(__dirname, '../frontend/views'));
 app.set('view engine', 'ejs');
 
-// Conectar ao MongoDB
+
 mongoose.connect('mongodb://localhost/contact_app', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
-// Configurar rotas
-const authRoutes = require('./routes/authroutes');
-const contactRoutes = require('./routes/contactroutes');
 
-// Rota para a página inicial
+const authRoutes = require('./routes/authroutes');
+const contactRoutes = require('./routes/contactRoutes');
+
+
 app.get('/', (req, res) => {
-    res.render('index'); // Renderiza o arquivo views/index.ejs
+    res.render('index'); 
 });
 
 app.use('/', authRoutes);
 app.use('/contacts', contactRoutes);
 
-// Iniciar o servidor
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
