@@ -229,7 +229,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Filtro de contatos por tags
             document.getElementById('search-tags').addEventListener('input', function() {
                 const filter = this.value.toLowerCase();
                 const contacts = document.querySelectorAll('#contact-list li');
@@ -243,7 +242,6 @@
                 });
             });
 
-            // Função para deletar contato
             document.querySelectorAll('.delete-btn').forEach(button => {
                 button.addEventListener('click', async (event) => {
                     event.preventDefault();

@@ -29,7 +29,7 @@ exports.addContact = async (req, res) => {
       email,
       phone,
       notes,
-      tags: tags ? tags.split(',').map(tag => tag.trim()) : [] // Divide e limpa as tags
+      tags: tags ? tags.split(',').map(tag => tag.trim()) : [] 
     });
     await contact.save();
     res.redirect('/contacts');
@@ -46,7 +46,7 @@ exports.updateContact = async (req, res) => {
   try {
     const contact = await Contact.findByIdAndUpdate(
       id,
-      { name, email, phone, notes, tags: tags ? tags.split(',').map(tag => tag.trim()) : [] }, // Divide e limpa as tags
+      { name, email, phone, notes, tags: tags ? tags.split(',').map(tag => tag.trim()) : [] }, 
       { new: true }
     );
 
