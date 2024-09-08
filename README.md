@@ -21,7 +21,34 @@ Este projeto foi desenvolvido pelos seguintes alunos:
 ## Iniciando Servidor
 
 ```bash
-npm start
+Configuração e Instalação
 ```
+Ja com Node, mongodb instalados
+
+### Clonando o Repositório
+Primeiro, clone o repositório do projeto:
+
+`git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git` e `cd SEU_REPOSITORIO`:
+Após se redirecionar para o local do repositorio usando "cd", use os comandos `npm install`
+
+### Configuração do Backend
+No diretório backend, instale as dependências necessárias:
+`cd backend`
+`npm install`
+
+### Configuração do Frontend
+No diretório frontend, instale as dependências necessárias:
+`cd frontend`
+`npm install`
+
+Após terminar a instalação, volte ao repositorio principal `cd SEU_REPOSITORI` e inicie o projeto com `npm start`
+
+### Testes
+Para verificar o teste utilize: `npm test`
+
+
+
+
+
 
 
