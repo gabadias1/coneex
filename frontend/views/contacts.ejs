@@ -178,64 +178,111 @@
             height: 100%;
         }
 
-        #reminder-section {
-            margin-top: 1rem;
-        }
+        /* Seção de lembretes */
+#reminder-section {
+    margin-top: 1rem;
+    background: #f9f9f9; /* Adiciona um fundo leve à seção */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
 
-        #reminder-section h2 {
-            background: #f6d365;
-            color: #fff;
-            font-size: 1.4rem; 
-            font-weight: 700;
-            letter-spacing: 1px;
-            padding: 10px; 
-            margin-bottom: 1rem;
-        }
+/* Cabeçalho da seção de lembretes */
+#reminder-section h2 {
+    background: #f6d365; /* Cor de fundo suave */
+    color: #fff; /* Texto branco */
+    font-size: 1.6rem; /* Aumenta o tamanho da fonte */
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 15px; /* Aumenta o padding */
+    border-radius: 8px; /* Adiciona bordas arredondadas */
+    margin-bottom: 1rem;
+    text-align: center; /* Centraliza o texto */
+}
 
-        #reminder-form label {
-            display: block;
-            margin-bottom: 4px; 
-            color: #333;
-            text-align: left;
-        }
+/* Estilo do formulário de lembretes */
+#reminder-form label {
+    display: block;
+    margin-bottom: 6px; /* Aumenta o espaço abaixo do label */
+    color: #333;
+    font-weight: 500; /* Deixa o texto do label um pouco mais forte */
+}
 
-        #reminder-form input, #reminder-form textarea {
-            width: calc(100% - 16px);
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 0.9rem; 
-            margin-bottom: 0.8rem; 
-        }
+#reminder-form input, #reminder-form textarea {
+    width: calc(100% - 20px); /* Ajusta a largura para incluir o padding */
+    padding: 10px; /* Aumenta o padding */
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Adiciona bordas arredondadas */
+    font-size: 1rem; /* Aumenta o tamanho da fonte */
+    margin-bottom: 0.8rem; 
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra interna sutil */
+}
 
-        #reminder-form textarea {
-            resize: vertical;
-            height: 80px; 
-        }
+#reminder-form textarea {
+    resize: vertical; /* Permite o redimensionamento vertical */
+    height: 100px; /* Aumenta a altura do textarea */
+}
 
-        #reminder-form button {
-            background: #f6d365;
-            color: #fff;
-            font-size: 1rem; 
-            width: 100%;
-            padding: 10px;
-        }
+/* Estilo do botão de enviar */
+#reminder-form button {
+    background: #f6d365;
+    color: #fff;
+    font-size: 1rem;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer; /* Adiciona um cursor de ponteiro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra ao botão */
+    transition: background 0.3s, transform 0.2s; /* Adiciona uma transição suave */
+}
 
-        #reminder-form button:hover {
-            background: #f6d365;
-        }
+#reminder-form button:hover {
+    background: #f49d37; /* Altera a cor de fundo ao passar o mouse */
+    transform: scale(1.02); /* Leve efeito de aumento */
+}
 
-        #reminder-list li {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 8px; 
-            margin-bottom: 0.8rem; 
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Estilo da lista de lembretes */
+#reminder-list {
+    max-height: 150px; /* Define a altura máxima da caixa de lembretes */
+    overflow-y: auto; /* Adiciona rolagem vertical quando necessário */
+    border: 1px solid #ddd; /* Adiciona uma borda ao redor da lista */
+    border-radius: 6px; /* Adiciona bordas arredondadas */
+    padding: 10px; /* Adiciona padding ao redor da lista */
+    background: #fff; /* Fundo branco para os itens da lista */
+    margin-top: 1rem; /* Espaço acima da lista */
+}
+
+/* Estilo dos itens na lista de lembretes */
+#reminder-list li {
+    background: #fff; /* Fundo branco para os itens da lista */
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Adiciona bordas arredondadas */
+    padding: 12px; /* Aumenta o padding */
+    margin-bottom: 1rem;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
+
+/* Estilo do botão de deletar */
+#reminder-list button {
+    background: #f49d37; /* Cor de fundo do botão de deletar */
+    color: #fff;
+    border: none;
+    border-radius: 4px; /* Borda arredondada */
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    cursor: pointer; /* Adiciona um cursor de ponteiro */
+    transition: background 0.3s, transform 0.2s; /* Adiciona uma transição suave */
+}
+
+#reminder-list button:hover {
+    background: #e68a25; /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento */
+}
     </style>
 </head>
 <body>
@@ -280,6 +327,25 @@
                 </ul>
             <% } %>
         </div>
+        <script>
+            document.getElementById('search-tags').addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                const contacts = document.querySelectorAll('#contact-list li');
+        
+                contacts.forEach(contact => {
+                    const contactName = contact.querySelector('strong').textContent.toLowerCase();
+                    const contactTags = contact.querySelector('div').textContent.toLowerCase();
+        
+                    if (contactName.includes(searchValue) || contactTags.includes(searchValue)) {
+                        contact.style.display = '';
+                    } else {
+                        contact.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+
     </div>
 <div id="reminder-section">
     <h2>Lembretes</h2>
@@ -390,4 +456,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 </body>
-</html>
