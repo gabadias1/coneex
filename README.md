@@ -20,11 +20,13 @@ Este projeto foi desenvolvido pelos seguintes alunos:
 
 ## Arquitetura do Projeto
 
-Este projeto utiliza o padrão Model-View-Controller (MVC):
+Este projeto utiliza o Padrão de Projeto Aplicado:
 
-- *Model:* Localizado em backend/models/, define a estrutura dos dados e a interação com o banco de dados.
-- *View:* Localizado em frontend/views/, é responsável pela apresentação dos dados ao usuário.
-- *Controller:* Localizado em backend/controllers/, gerencia a lógica de negócios e a interação entre Models e Views.
+Utilizamos o padrão Template Method, que organiza o fluxo de operações comuns em métodos centrais, deixando partes específicas para serem implementadas individualmente.
+
+- *Organização clara*: Operações como criar, editar, e deletar contatos seguem uma estrutura padrão.
+- *Reutilização de código*: A lógica comum, como validação e interação com o banco de dados, é aplicada de maneira uniforme em diversas funções.
+- *Facilidade de manutenção*: Adaptações ou extensões do fluxo principal são feitas sem alterar a base do código.
 
 ## Iniciando Servidor
 
