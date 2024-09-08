@@ -29,7 +29,7 @@ Ja com Node, mongodb instalados
 Primeiro, clone o repositório do projeto:
 
 `git clone git@github.com:gabadias1/coneex.git` e `cd SEU_REPOSITORIO`:
-Após se redirecionar para o local do repositorio usando "cd", use os comandos `npm install`
+Após se redirecionar para o local do repositorio usando "cd", use os comandos `npm install` e `nom install method-override`
 
 ### Configuração do Backend
 No diretório backend, instale as dependências necessárias:
