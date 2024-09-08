@@ -18,6 +18,14 @@ Este projeto foi desenvolvido pelos seguintes alunos:
 
 - Felipe A M Salazar
 
+## Arquitetura do Projeto
+
+Este projeto utiliza o padrão Model-View-Controller (MVC):
+
+- *Model:* Localizado em backend/models/, define a estrutura dos dados e a interação com o banco de dados.
+- *View:* Localizado em frontend/views/, é responsável pela apresentação dos dados ao usuário.
+- *Controller:* Localizado em backend/controllers/, gerencia a lógica de negócios e a interação entre Models e Views.
+
 ## Iniciando Servidor
 
 ```bash
