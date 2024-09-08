@@ -295,6 +295,30 @@
 </div>
 
 <script>
+
+
+document.querySelectorAll('.delete-btn').forEach(button => {
+  button.addEventListener('click', async (event) => {
+    const id = event.target.getAttribute('data-id');
+    try {
+      const response = await fetch(`/contacts/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (response.ok) {
+        location.reload(); // Recarrega a página para atualizar a lista de contatos
+      } else {
+        console.error('Erro ao deletar contato:', await response.json());
+      }
+    } catch (error) {
+      console.error('Erro ao enviar requisição:', error);
+    }
+  });
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     function fetchReminders() {
         fetch('/contacts/reminders')
