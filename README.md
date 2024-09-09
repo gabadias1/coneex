@@ -39,7 +39,9 @@ Utilizamos o padrão Template Method, que organiza o fluxo de operações comuns
 Configuração e Instalação
 ```
 link para instalação Node: https://nodejs.org/dist/v20.17.0/node-v20.17.0-x64.msi
+
 link para instalação Mongodb: https://www.mongodb.com/try/download/community
+
 Ja com Node, mongodb instalados
 
 ### Clonando o Repositório
