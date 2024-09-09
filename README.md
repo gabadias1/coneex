@@ -1,5 +1,5 @@
 # Connex
-Este é um projeto desenvolvido para a disciplina de Engenharia de Software (BCC3004) na UTFPR. O objetivo do software é gerenciar uma agenda de contatos, permitindo a adição, visualização e exclusão de entradas de contatos.
+Este é um projeto desenvolvido para a disciplina de Engenharia de Software (BCC3004) na UTFPR. O objetivo do software é gerenciar uma agenda de contatos, permitindo a adição, visualização e exclusão de entradas de contatos, além de permitir a criação de uma lista de lembretes contendo um calendário.
 ## Tecnologias 
 
 <p align="center">
@@ -38,6 +38,8 @@ Utilizamos o padrão Template Method, que organiza o fluxo de operações comuns
 ```bash
 Configuração e Instalação
 ```
+link para instalação Node: https://nodejs.org/dist/v20.17.0/node-v20.17.0-x64.msi
+link para instalação Mongodb: https://www.mongodb.com/try/download/community
 Ja com Node, mongodb instalados
 
 ### Clonando o Repositório
