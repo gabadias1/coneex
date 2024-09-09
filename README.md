@@ -9,6 +9,11 @@ Este é um projeto desenvolvido para a disciplina de Engenharia de Software (BCC
 </p>
 
 
+Versões:
+Node.js : v20.16.0
+Mongodb : v7.0.14
+
+
 ## Contribuidores
 Este projeto foi desenvolvido pelos seguintes alunos:
 
