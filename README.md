@@ -60,7 +60,7 @@ git clone https://github.com/gabadias1/coneex.git
  ````
  cd coneex
 ````
-Após se redirecionar para o local do repositorio usando "cd", use os comandos:
+Após se redirecionar para o local do repositorio usando 'cd', use os comandos:
 ``` 
 npm install
 ```
@@ -70,22 +70,33 @@ npm install method-override
 
 ### Configuração do Backend
 No diretório backend, instale as dependências necessárias:
-````
+```
 cd backend
-````
-````
+```
+```
 npm install
 ```
 
 ### Configuração do Frontend
-No diretório frontend, instale as dependências necessárias:
-`cd frontend`
-`npm install`
 
-Após terminar a instalação, volte ao repositorio principal `cd SEU_REPOSITORI` e inicie o projeto com `npm start`
+No diretório frontend, instale as dependências necessárias:
+```
+cd frontend
+```
+```
+npm install
+```
+
+Após terminar a instalação, volte ao repositorio principal `cd coneex ..` e inicie o projeto com:
+``` 
+npm start
+```
 
 ### Testes
-Para verificar o teste utilize: `npm test`
+Para verificar o teste utilize: 
+```
+npm test
+```
 
 
 
