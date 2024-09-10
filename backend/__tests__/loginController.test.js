@@ -47,7 +47,7 @@ describe('POST /login', () => {
       .send({ username: 'user@example.com', password: 'wrongpassword' });
 
     expect(response.statusCode).toBe(401);
-    expect(response.text).toBe('Invalid credentials');
+    expect(response.text).toBe('Credenciais inválidas');
   });
 
   it('should return 401 for incorrect password', async () => {
@@ -60,7 +60,7 @@ describe('POST /login', () => {
       .send({ username: 'user@example.com', password: 'wrongpassword' });
 
     expect(response.statusCode).toBe(401);
-    expect(response.text).toBe('Invalid credentials');
+    expect(response.text).toBe('Credenciais inválidas');
   });
 
   it('should return 500 on server error', async () => {
