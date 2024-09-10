@@ -25,13 +25,15 @@ Este projeto foi desenvolvido pelos seguintes alunos:
 
 ## Arquitetura do Projeto
 
-Este projeto utiliza o Padrão de Projeto Aplicado:
+A arquitetura MVC (Model-View-Controller) é um padrão utilizado para organizar o código e separar as responsabilidades em aplicações web e de software. Ela divide a aplicação em três componentes principais:
 
-Utilizamos o padrão Template Method, que organiza o fluxo de operações comuns em métodos centrais, deixando partes específicas para serem implementadas individualmente.
-
-- *Organização clara*: Operações como criar, editar, e deletar contatos seguem uma estrutura padrão.
-- *Reutilização de código*: A lógica comum, como validação e interação com o banco de dados, é aplicada de maneira uniforme em diversas funções.
-- *Facilidade de manutenção*: Adaptações ou extensões do fluxo principal são feitas sem alterar a base do código.
+Model (Modelo): Gerencia os dados e a lógica de negócios, realizando operações como criar, ler, atualizar e deletar (CRUD). Define as regras de negócio e validação.
+View (Visão): Apresenta os dados ao usuário e define a interface (HTML/CSS). É responsável por exibir as informações de maneira clara e atualizá-las conforme necessário.
+Controller (Controlador): Interpreta as ações do usuário, atualiza o Model e a View, agindo como intermediário entre eles.
+Como se aplica ao projeto:
+Model: Interação com backend (CRUD de contatos e lembretes).
+View: Estrutura da UI com HTML/CSS.
+Controller: JavaScript que lida com eventos de usuário e atualiza o Model e a View.
 
 ## Iniciando Servidor
 
