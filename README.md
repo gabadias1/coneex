@@ -30,11 +30,15 @@ A arquitetura MVC (Model-View-Controller) é um padrão utilizado para organizar
 Model (Modelo): Gerencia os dados e a lógica de negócios, realizando operações como criar, ler, atualizar e deletar (CRUD). Define as regras de negócio e validação.
 
 View (Visão): Apresenta os dados ao usuário e define a interface (HTML/CSS). É responsável por exibir as informações de maneira clara e atualizá-las conforme necessário.
+
 Controller (Controlador): Interpreta as ações do usuário, atualiza o Model e a View, agindo como intermediário entre eles.
+
 Como se aplica ao projeto:
 
 Model: Interação com backend (CRUD de contatos e lembretes).
+
 View: Estrutura da UI com HTML/CSS.
+
 Controller: JavaScript que lida com eventos de usuário e atualiza o Model e a View.
 
 ## Iniciando Servidor
