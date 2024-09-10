@@ -43,9 +43,9 @@ Controller: JavaScript que lida com eventos de usuário e atualiza o Model e a V
 
 ## Iniciando Servidor
 
-```bash
-Configuração e Instalação
-```
+
+## Configuração e Instalação
+
 link para instalação Node: https://nodejs.org/dist/v20.17.0/node-v20.17.0-x64.msi
 
 link para instalação Mongodb: https://www.mongodb.com/try/download/community
@@ -54,14 +54,28 @@ Ja com Node, mongodb instalados
 
 ### Clonando o Repositório
 Primeiro, clone o repositório do projeto:
-
-`git clone https://github.com/gabadias1/coneex.git` e `cd local_onde_repositorio_está`:
-Após se redirecionar para o local do repositorio usando "cd", use os comandos `npm install` e `npm install method-override`
+````
+git clone https://github.com/gabadias1/coneex.git
+````
+ ````
+ cd coneex
+````
+Após se redirecionar para o local do repositorio usando "cd", use os comandos:
+``` 
+npm install
+```
+``` 
+npm install method-override
+````
 
 ### Configuração do Backend
 No diretório backend, instale as dependências necessárias:
-`cd backend`
-`npm install`
+````
+cd backend
+````
+````
+npm install
+```
 
 ### Configuração do Frontend
 No diretório frontend, instale as dependências necessárias:
