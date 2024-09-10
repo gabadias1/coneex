@@ -4,11 +4,6 @@ const bcrypt = require('bcryptjs');
 exports.register = async (req, res) => {
   const { username, password } = req.body;
 
-  // Verifique se o username contém um '@'
-  if (!username.includes('@')) {
-    return res.status(400).send('O nome de usuário deve conter um @');
-  }
-
   try {
     const user = new User({ username, password });
     await user.save();
@@ -20,11 +15,6 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { username, password } = req.body;
-
-  // Verifique se o username contém um '@'
-  if (!username.includes('@')) {
-    return res.status(400).send('O nome de usuário deve conter um @');
-  }
 
   try {
     const user = await User.findOne({ username });

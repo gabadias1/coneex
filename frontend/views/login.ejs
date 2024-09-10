@@ -107,19 +107,40 @@ a:hover {
 }
 
   </style>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Coneex</title>
 </head>
 <body>
   <div class="container">
     <h1>Coneex</h1>
     <h2>Login</h2>
-    <form action="/login" method="POST">
-      <label for="username">Email</label>
+    <form id="login-form" action="/login" method="POST">
+      <label for="username">Email:</label>
       <input type="text" id="username" name="username" required>
-      <label for="password">Senha</label>
+      <label for="password">Senha:</label>
       <input type="password" id="password" name="password" required>
       <button type="submit">Entrar</button>
     </form>
     <p class="signup-link">Não tem uma conta? <a href="/register">Cadastre-se</a></p>
   </div>
+
+  <!-- Script para verificação de '@' -->
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      const username = document.getElementById('username').value;
+      
+      // Verifica se o username contém '@'
+      if (!username.includes('@')) {
+        // Exibe a mensagem de alerta
+        alert('@ necessário no nome de usuário');
+        // Impede o envio do formulário
+        event.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>

@@ -80,11 +80,18 @@ a:hover {
     text-decoration: underline;
 }
   </style>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
 </head>
 <body>
   <div class="container">
     <h1>Register</h1>
-    <form action="/register" method="POST">
+    <form id="register-form" action="/register" method="POST">
       <label for="username">Email:</label>
       <input type="text" id="username" name="username" required>
       <label for="password">Senha:</label>
@@ -93,5 +100,20 @@ a:hover {
     </form>
     <p class="signup-link">Já tem uma conta? <a href="/login">Entre aqui</a></p>
   </div>
+
+  <!-- Script para verificação de '@' -->
+  <script>
+    document.getElementById('register-form').addEventListener('submit', function(event) {
+      const username = document.getElementById('username').value;
+      
+      // Verifica se o username contém '@'
+      if (!username.includes('@')) {
+        // Exibe a mensagem de alerta
+        alert('@ necessário no nome de usuário');
+        // Impede o envio do formulário
+        event.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
