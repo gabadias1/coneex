@@ -3,8 +3,12 @@ const Reminder = require('../models/reminder');
 // Adicionar um lembrete
 exports.addReminder = async (req, res) => {
   try {
-    const { date, note } = req.body;
-    const newReminder = new Reminder({ date, note });
+    let { date, note } = req.body;
+    // Converter a data para formato correto no backend
+    const [day, month, year] = date.split('/');
+    const formattedDate = new Date(`${year}-${month}-${day}`);
+    
+    const newReminder = new Reminder({ date: formattedDate, note });
     await newReminder.save();
     res.status(201).json(newReminder);
   } catch (error) {
@@ -12,13 +16,15 @@ exports.addReminder = async (req, res) => {
   }
 };
 
+
 // Obter todos os lembretes
-exports.getReminders = async (req, res) => {
+exports.getReminders = async (_req, res) => {
   try {
     const reminders = await Reminder.find();
     const formattedReminders = reminders.map(reminder => ({
       _id: reminder._id,
-      date: new Date(reminder.date).toLocaleDateString(), // Formata a data
+      // Formatar a data no formato brasileiro DD/MM/YYYY
+      date: new Date(reminder.date).toLocaleDateString('pt-BR'), 
       note: reminder.note
     }));
     res.status(200).json(formattedReminders);
